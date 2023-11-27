@@ -36,11 +36,10 @@ public class Main {
         List<Item> itemsL = new ArrayList<>();
         List<Item> itemsC = new ArrayList<>();
 
-        Item manzana = new Item("Manzana", "Comestible", 0.5F, 3);
-        //Desgaste = 3 -> Esta mordida jeje
+        Item manzanaM = new Item("Manzana mordida", "Comestible", 0.3F, 3);
+        itemsL.add(manzanaM);
+        Item manzana = new Item("Manzana", "Comestible", 0.5F, 0);
         itemsM.add(manzana);
-        manzana.setDesgaste(0);
-        itemsL.add(manzana);
         Item cuchillo = new Item("Cuchillo", "Ataque", 10, 15);
         itemsL.add(cuchillo);
         Item flor = new Item("Flor", "Oculto", 99.35F, 0);
@@ -56,8 +55,28 @@ public class Main {
         System.out.println("Crea un segundo vendedor, mejor si es de otro tipo");
         Vendedor vendedor2 = crearVendedor(itemsL, itemsM, itemsC);
 
+        System.out.println("Items vendedor 1 antes de vender:");
+        for (Item item : vendedor1.getItem_venta()) {
+            System.out.println(vendedor1.getItem_venta().indexOf(item) + "-" + item.getNombre());
+        }
+
+        System.out.println("Items vendedor 2 antes de vender:");
+        for (Item item : vendedor2.getItem_venta()) {
+            System.out.println(vendedor2.getItem_venta().indexOf(item) + "-" + item.getNombre());
+        }
+
         //Con un poco mas de tiempo hacia un dialogo de compra/venta y seleccion de item
         vendedor1.comprarItem(vendedor2.ventaItem(0,0));
 
+
+        System.out.println("\nItems vendedor 1 despues de vender:");
+        for (Item item : vendedor1.getItem_venta()) {
+            System.out.println(vendedor1.getItem_venta().indexOf(item) + "-" + item.getNombre());
+        }
+
+        System.out.println("Items vendedor 2 despues de vender:");
+        for (Item item : vendedor2.getItem_venta()) {
+            System.out.println(vendedor2.getItem_venta().indexOf(item) + "-" + item.getNombre());
+        }
     }
 }
