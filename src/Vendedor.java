@@ -53,4 +53,9 @@ public class Vendedor {
         item_venta.remove(num_item);
         return item;
     }
+
+    public void comprarItem(Item item)
+    {
+        getItem_venta().add(item);
+    }
 }
